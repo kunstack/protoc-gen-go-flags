@@ -7,7 +7,7 @@ import (
 
 	"github.com/spf13/pflag"
 
-	"github.com/kunstack/protoc-gen-flags/examples/advanced/proto"
+	"github.com/kunstack/protoc-gen-go-flags/examples/advanced/proto"
 )
 
 func main() {

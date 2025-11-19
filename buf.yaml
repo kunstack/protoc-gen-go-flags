@@ -1,6 +1,7 @@
 version: v2
 modules:
   - path: .
-    name: buf.build/kunstack/flags
+    name: buf.build/kunstack/protoc-gen-go-flags
     excludes:
       - tests
+      - examples

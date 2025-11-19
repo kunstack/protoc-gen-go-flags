@@ -69,7 +69,7 @@ package flags;
 import "google/protobuf/descriptor.proto";
 
 // buf:lint:ignore PACKAGE_SAME_GO_PACKAGE
-option go_package = "github.com/kunstack/protoc-gen-flags/flags;flags";
+option go_package = "github.com/kunstack/protoc-gen-go-flags/flags;flags";
 
 // MessageOptions extends google.protobuf.MessageOptions to provide message-level
 // control over flag generation behavior.
@@ -93,7 +93,7 @@ extend google.protobuf.MessageOptions {
 // configuration for flag generation.
 extend google.protobuf.FieldOptions {
   // Value specifies the flag configuration for this field. When set, the
-  // protoc-gen-flags plugin will generate command-line flag bindings based
+  // protoc-gen-go-flags plugin will generate command-line flag bindings based
   // on the field type and configuration provided.
   FieldFlags value = 1171;
 }

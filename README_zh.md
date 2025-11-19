@@ -1,15 +1,15 @@
-# protoc-gen-flags
+# protoc-gen-go-flags
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/kunstack/protoc-gen-flags)](https://goreportcard.com/report/github.com/kunstack/protoc-gen-flags)
-[![Go Reference](https://pkg.go.dev/badge/github.com/kunstack/protoc-gen-flags.svg)](https://pkg.go.dev/github.com/kunstack/protoc-gen-flags)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kunstack/protoc-gen-go-flags)](https://goreportcard.com/report/github.com/kunstack/protoc-gen-go-flags)
+[![Go Reference](https://pkg.go.dev/badge/github.com/kunstack/protoc-gen-go-flags.svg)](https://pkg.go.dev/github.com/kunstack/protoc-gen-go-flags)
 
 中文文档 | [English](README.md)
 
-protoc-gen-flags 是一个基于 Go 语言的 Protocol Buffer 编译器插件，用于为 protobuf 消息自动生成命令行标志绑定。它能够根据 protobuf 消息定义自动生成 `AddFlags` 方法，与 `spf13/pflag` 库无缝集成，为您的 protobuf 消息提供强大的命令行参数支持。
+protoc-gen-go-flags 是一个基于 Go 语言的 Protocol Buffer 编译器插件，用于为 protobuf 消息自动生成命令行标志绑定。它能够根据 protobuf 消息定义自动生成 `AddFlags` 方法，与 `spf13/pflag` 库无缝集成，为您的 protobuf 消息提供强大的命令行参数支持。
 
-## 为什么使用 protoc-gen-flags
+## 为什么使用 protoc-gen-go-flags
 
-如果您的项目满足以下任一条件，protoc-gen-flags 将大大简化您的开发工作：
+如果您的项目满足以下任一条件，protoc-gen-go-flags 将大大简化您的开发工作：
 
 - ✅ 使用 Protocol Buffers 定义配置结构
 - ✅ 需要为 CLI 应用提供命令行参数支持
@@ -17,7 +17,7 @@ protoc-gen-flags 是一个基于 Go 语言的 Protocol Buffer 编译器插件，
 - ✅ 想要保持配置定义和 CLI 接口的一致性
 - ✅ 需要支持复杂的嵌套配置结构
 
-**传统方式 vs protoc-gen-flags：**
+**传统方式 vs protoc-gen-go-flags：**
 
 传统方式需要为每个配置字段手动编写标志绑定：
 ```go
@@ -28,7 +28,7 @@ fs.BoolVar(&config.Verbose, "verbose", false, "Enable verbose")
 // ... 为每个字段重复编写
 ```
 
-使用 protoc-gen-flags：
+使用 protoc-gen-go-flags：
 ```go
 // 自动生成：简洁且类型安全
 config.AddFlags(fs)
@@ -36,7 +36,7 @@ config.AddFlags(fs)
 
 ## 目录
 
-- [为什么使用 protoc-gen-flags](#为什么使用-protoc-gen-flags)
+- [为什么使用 protoc-gen-go-flags](#为什么使用-protoc-gen-go-flags)
 - [特性](#特性)
 - [快速开始](#快速开始)
   - [前置要求](#前置要求)
@@ -74,7 +74,7 @@ config.AddFlags(fs)
 
 在开始之前，请确保您的开发环境满足以下要求：
 
-- **Go 1.18+**：protoc-gen-flags 需要 Go 1.18 或更高版本
+- **Go 1.18+**：protoc-gen-go-flags 需要 Go 1.18 或更高版本
 - **Protocol Buffers 编译器（protoc）**：用于编译 .proto 文件
   ```bash
   # macOS
@@ -92,15 +92,15 @@ config.AddFlags(fs)
 
 ### 安装
 
-安装 protoc-gen-flags 插件：
+安装 protoc-gen-go-flags 插件：
 
 ```bash
-go install github.com/kunstack/protoc-gen-flags@latest
+go install github.com/kunstack/protoc-gen-go-flags@latest
 ```
 
 验证安装：
 ```bash
-protoc-gen-flags --version
+protoc-gen-go-flags --version
 ```
 
 ### 基本用法
@@ -202,7 +202,7 @@ config.AddFlags(customFS)
 
 ## 集成教程
 
-本节提供完整的分步教程，帮助您在自己的项目中集成 protoc-gen-flags。
+本节提供完整的分步教程，帮助您在自己的项目中集成 protoc-gen-go-flags。
 
 ### 步骤 1：准备项目
 
@@ -223,8 +223,8 @@ go get github.com/spf13/pflag
 # 安装 protobuf 运行时
 go get google.golang.org/protobuf
 
-# 安装 protoc-gen-flags 运行时库
-go get github.com/kunstack/protoc-gen-flags/flags
+# 安装 protoc-gen-go-flags 运行时库
+go get github.com/kunstack/protoc-gen-go-flags/flags
 ```
 
 创建项目结构：
@@ -239,7 +239,7 @@ myapp/
 
 ### 步骤 2：添加标志注解依赖
 
-您需要将 protoc-gen-flags 的注解文件添加到您的项目中。有两种方式：
+您需要将 protoc-gen-go-flags 的注解文件添加到您的项目中。有两种方式：
 
 #### 方式 1：使用 Buf Schema Registry（推荐）
 
@@ -248,7 +248,7 @@ myapp/
 ```yaml
 version: v2
 deps:
-  - buf.build/kunstack/flags
+  - buf.build/kunstack/protoc-gen-go-flags
 lint:
   use:
     - STANDARD
@@ -265,7 +265,7 @@ plugins:
   - remote: buf.build/protocolbuffers/go
     out: .
     opt: paths=source_relative
-  - local: protoc-gen-flags
+  - local: protoc-gen-go-flags
     out: .
     opt: paths=source_relative
 ```
@@ -279,12 +279,12 @@ buf generate
 
 #### 方式 2：直接复制文件
 
-从 [protoc-gen-flags 仓库](https://github.com/kunstack/protoc-gen-flags/tree/main/flags) 下载 `annotations.proto` 文件到您的项目：
+从 [protoc-gen-go-flags 仓库](https://github.com/kunstack/protoc-gen-go-flags/tree/main/flags) 下载 `annotations.proto` 文件到您的项目：
 
 ```bash
 mkdir -p proto/flags
 curl -o proto/flags/annotations.proto \
-  https://raw.githubusercontent.com/kunstack/protoc-gen-flags/main/flags/annotations.proto
+  https://raw.githubusercontent.com/kunstack/protoc-gen-go-flags/main/flags/annotations.proto
 ```
 
 项目结构更新为：
@@ -635,7 +635,7 @@ proto/config.proto:3:1: Import "flags/annotations.proto" was not found.
 - **使用 buf 方式**：确保运行了 `buf mod update` 并且 `buf.yaml` 中正确配置了依赖：
   ```yaml
   deps:
-    - buf.build/kunstack/flags
+    - buf.build/kunstack/protoc-gen-go-flags
   ```
 
 - **使用 protoc 方式**：确保在 protoc 命令中包含正确的导入路径：
@@ -653,9 +653,9 @@ undefined: types.Duration
 
 **解决方案**：确保已安装运行时库：
 ```bash
-go get github.com/kunstack/protoc-gen-flags/flags
-go get github.com/kunstack/protoc-gen-flags/types
-go get github.com/kunstack/protoc-gen-flags/utils
+go get github.com/kunstack/protoc-gen-go-flags/flags
+go get github.com/kunstack/protoc-gen-go-flags/types
+go get github.com/kunstack/protoc-gen-go-flags/utils
 ```
 
 生成的代码会自动导入这些包，无需手动导入。
@@ -681,21 +681,21 @@ fs.Parse(os.Args[1:]) // 3. 解析参数
 Failure: plugin flags: not found
 ```
 
-**解决方案**：确保 protoc-gen-flags 已安装并在 PATH 中：
+**解决方案**：确保 protoc-gen-go-flags 已安装并在 PATH 中：
 ```bash
 # 安装插件
-go install github.com/kunstack/protoc-gen-flags@latest
+go install github.com/kunstack/protoc-gen-go-flags@latest
 
 # 验证安装
-which protoc-gen-flags
-protoc-gen-flags --version
+which protoc-gen-go-flags
+protoc-gen-go-flags --version
 ```
 
 #### 问题 5：包名冲突
 
 **现象**：生成的代码中有包名冲突，例如同时使用 `wrapperspb` 和自定义的 `wrapperspb` 包。
 
-**解决方案**：protoc-gen-flags 会自动处理包名冲突，为冲突的包生成别名。生成的代码会自动使用别名导入，无需手动处理。
+**解决方案**：protoc-gen-go-flags 会自动处理包名冲突，为冲突的包生成别名。生成的代码会自动使用别名导入，无需手动处理。
 
 #### 问题 6：Map 格式解析错误
 
@@ -871,7 +871,7 @@ message Config {
 
 ## 支持的类型
 
-protoc-gen-flags 支持所有 Protocol Buffer 类型：
+protoc-gen-go-flags 支持所有 Protocol Buffer 类型：
 
 ### 标量类型
 
@@ -1159,7 +1159,7 @@ message MainConfig {
 
 ## 分层标志组织
 
-protoc-gen-flags 支持分层组织标志，通过 `WithPrefix` 和 `WithDelimiter` 选项实现。
+protoc-gen-go-flags 支持分层组织标志，通过 `WithPrefix` 和 `WithDelimiter` 选项实现。
 
 ### 基本前缀
 
@@ -1205,10 +1205,10 @@ config.AddFlags(fs,
 
 ## 常见问题
 
-### Q: 如何在现有项目中集成 protoc-gen-flags？
+### Q: 如何在现有项目中集成 protoc-gen-go-flags？
 
 **A:** 按照以下步骤：
-1. 安装插件：`go install github.com/kunstack/protoc-gen-flags@latest`
+1. 安装插件：`go install github.com/kunstack/protoc-gen-go-flags@latest`
 2. 复制 `annotations.proto` 到您的项目
 3. 在 `.proto` 文件中添加标志注解
 4. 运行 `protoc` 生成代码
@@ -1264,11 +1264,11 @@ config.AddFlags(fs,
 **A:** 您需要安装并导入运行时库：
 
 ```bash
-go get github.com/kunstack/protoc-gen-flags/flags
+go get github.com/kunstack/protoc-gen-go-flags/flags
 ```
 
 ```go
-import "github.com/kunstack/protoc-gen-flags/flags"
+import "github.com/kunstack/protoc-gen-go-flags/flags"
 ```
 
 ### Q: 如何跳过特定字段的标志生成？
@@ -1295,7 +1295,7 @@ int32 port = 1 [(flags.value).int32 = {
 
 ### Q: 支持哪些 protobuf 类型？
 
-**A:** protoc-gen-flags 支持所有标准 protobuf 类型：
+**A:** protoc-gen-go-flags 支持所有标准 protobuf 类型：
 - 标量类型：string, int32, int64, bool, float, double 等
 - 特殊类型：google.protobuf.Duration, Timestamp
 - 复合类型：repeated（数组）、map（映射）
@@ -1305,7 +1305,7 @@ int32 port = 1 [(flags.value).int32 = {
 
 ### Q: 如何在标志中使用环境变量？
 
-**A:** protoc-gen-flags 专注于命令行标志绑定。如需环境变量支持，建议结合使用 [viper](https://github.com/spf13/viper) 等配置管理库：
+**A:** protoc-gen-go-flags 专注于命令行标志绑定。如需环境变量支持，建议结合使用 [viper](https://github.com/spf13/viper) 等配置管理库：
 
 ```go
 import (
@@ -1332,7 +1332,7 @@ fs.Parse(os.Args[1:])
 
 ### Q: 是否支持 gRPC？
 
-**A:** protoc-gen-flags 与 gRPC 完全兼容。您可以在同一个 `.proto` 文件中同时定义 gRPC 服务和标志配置：
+**A:** protoc-gen-go-flags 与 gRPC 完全兼容。您可以在同一个 `.proto` 文件中同时定义 gRPC 服务和标志配置：
 
 ```bash
 protoc \
@@ -1346,7 +1346,7 @@ protoc \
 
 欢迎贡献！如果您有建议或发现问题，请：
 
-- 提交 Issue：[GitHub Issues](https://github.com/kunstack/protoc-gen-flags/issues)
+- 提交 Issue：[GitHub Issues](https://github.com/kunstack/protoc-gen-go-flags/issues)
 - 提交 Pull Request：Fork 项目并创建 PR
 - 改进文档：帮助完善文档和示例
 

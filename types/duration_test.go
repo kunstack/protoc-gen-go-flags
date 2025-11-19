@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/types/known/durationpb"
 
-	"github.com/kunstack/protoc-gen-flags/types"
+	"github.com/kunstack/protoc-gen-go-flags/types"
 )
 
 func TestDurationValue_String(t *testing.T) {

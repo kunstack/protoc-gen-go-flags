@@ -1,7 +1,7 @@
 package module
 
 import (
-	"github.com/kunstack/protoc-gen-flags/flags"
+	"github.com/kunstack/protoc-gen-go-flags/flags"
 	pgs "github.com/lyft/protoc-gen-star/v2"
 	"google.golang.org/protobuf/runtime/protoimpl"
 )

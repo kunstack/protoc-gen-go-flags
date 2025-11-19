@@ -1,15 +1,15 @@
-# protoc-gen-flags
+# protoc-gen-go-flags
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/kunstack/protoc-gen-flags)](https://goreportcard.com/report/github.com/kunstack/protoc-gen-flags)
-[![Go Reference](https://pkg.go.dev/badge/github.com/kunstack/protoc-gen-flags.svg)](https://pkg.go.dev/github.com/kunstack/protoc-gen-flags)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kunstack/protoc-gen-go-flags)](https://goreportcard.com/report/github.com/kunstack/protoc-gen-go-flags)
+[![Go Reference](https://pkg.go.dev/badge/github.com/kunstack/protoc-gen-go-flags.svg)](https://pkg.go.dev/github.com/kunstack/protoc-gen-go-flags)
 
 [中文文档](README_zh.md) | English
 
-protoc-gen-flags is a Go-based Protocol Buffer compiler plugin that automatically generates command-line flag bindings for protobuf messages. It generates `AddFlags` methods based on protobuf message definitions, seamlessly integrating with the `spf13/pflag` library to provide powerful command-line argument support for your protobuf messages.
+protoc-gen-go-flags is a Go-based Protocol Buffer compiler plugin that automatically generates command-line flag bindings for protobuf messages. It generates `AddFlags` methods based on protobuf message definitions, seamlessly integrating with the `spf13/pflag` library to provide powerful command-line argument support for your protobuf messages.
 
-## Why Use protoc-gen-flags
+## Why Use protoc-gen-go-flags
 
-If your project meets any of the following criteria, protoc-gen-flags will greatly simplify your development workflow:
+If your project meets any of the following criteria, protoc-gen-go-flags will greatly simplify your development workflow:
 
 - ✅ Use Protocol Buffers to define configuration structures
 - ✅ Need command-line argument support for CLI applications
@@ -17,7 +17,7 @@ If your project meets any of the following criteria, protoc-gen-flags will great
 - ✅ Maintain consistency between configuration definitions and CLI interfaces
 - ✅ Support complex nested configuration structures
 
-**Traditional Approach vs protoc-gen-flags:**
+**Traditional Approach vs protoc-gen-go-flags:**
 
 The traditional approach requires manually writing flag bindings for each configuration field:
 ```go
@@ -28,7 +28,7 @@ fs.BoolVar(&config.Verbose, "verbose", false, "Enable verbose")
 // ... repeat for every field
 ```
 
-With protoc-gen-flags:
+With protoc-gen-go-flags:
 ```go
 // Auto-generated: concise and type-safe
 config.AddFlags(fs)
@@ -36,7 +36,7 @@ config.AddFlags(fs)
 
 ## Table of Contents
 
-- [Why Use protoc-gen-flags](#why-use-protoc-gen-flags)
+- [Why Use protoc-gen-go-flags](#why-use-protoc-gen-go-flags)
 - [Features](#features)
 - [Quick Start](#quick-start)
   - [Prerequisites](#prerequisites)
@@ -74,7 +74,7 @@ config.AddFlags(fs)
 
 Before getting started, ensure your development environment meets the following requirements:
 
-- **Go 1.18+**: protoc-gen-flags requires Go 1.18 or higher
+- **Go 1.18+**: protoc-gen-go-flags requires Go 1.18 or higher
 - **Protocol Buffers Compiler (protoc)**: Used to compile .proto files
   ```bash
   # macOS
@@ -92,15 +92,15 @@ Before getting started, ensure your development environment meets the following 
 
 ### Installation
 
-Install the protoc-gen-flags plugin:
+Install the protoc-gen-go-flags plugin:
 
 ```bash
-go install github.com/kunstack/protoc-gen-flags@latest
+go install github.com/kunstack/protoc-gen-go-flags@latest
 ```
 
 Verify installation:
 ```bash
-protoc-gen-flags --version
+protoc-gen-go-flags --version
 ```
 
 ### Basic Usage
@@ -202,7 +202,7 @@ config.AddFlags(customFS)
 
 ## Complete Integration Tutorial
 
-This section provides a complete step-by-step tutorial to help you integrate protoc-gen-flags into your own projects.
+This section provides a complete step-by-step tutorial to help you integrate protoc-gen-go-flags into your own projects.
 
 ### Step 1: Prepare Your Project
 
@@ -223,8 +223,8 @@ go get github.com/spf13/pflag
 # Install protobuf runtime
 go get google.golang.org/protobuf
 
-# Install protoc-gen-flags runtime library
-go get github.com/kunstack/protoc-gen-flags/flags
+# Install protoc-gen-go-flags runtime library
+go get github.com/kunstack/protoc-gen-go-flags/flags
 ```
 
 Create project structure:
@@ -239,7 +239,7 @@ myapp/
 
 ### Step 2: Add Flag Annotation Dependencies
 
-You need to add protoc-gen-flags annotation files to your project. There are two approaches:
+You need to add protoc-gen-go-flags annotation files to your project. There are two approaches:
 
 #### Option 1: Use Buf Schema Registry (Recommended)
 
@@ -248,7 +248,7 @@ Add the dependency in your `buf.yaml`:
 ```yaml
 version: v2
 deps:
-  - buf.build/kunstack/flags
+  - buf.build/kunstack/protoc-gen-go-flags
 lint:
   use:
     - STANDARD
@@ -265,7 +265,7 @@ plugins:
   - remote: buf.build/protocolbuffers/go
     out: .
     opt: paths=source_relative
-  - local: protoc-gen-flags
+  - local: protoc-gen-go-flags
     out: .
     opt: paths=source_relative
 ```
@@ -279,12 +279,12 @@ buf generate
 
 #### Option 2: Copy Files Directly
 
-Download the `annotations.proto` file from the [protoc-gen-flags repository](https://github.com/kunstack/protoc-gen-flags/tree/main/flags) to your project:
+Download the `annotations.proto` file from the [protoc-gen-go-flags repository](https://github.com/kunstack/protoc-gen-go-flags/tree/main/flags) to your project:
 
 ```bash
 mkdir -p proto/flags
 curl -o proto/flags/annotations.proto \
-  https://raw.githubusercontent.com/kunstack/protoc-gen-flags/main/flags/annotations.proto
+  https://raw.githubusercontent.com/kunstack/protoc-gen-go-flags/main/flags/annotations.proto
 ```
 
 Updated project structure:
@@ -635,7 +635,7 @@ proto/config.proto:3:1: Import "flags/annotations.proto" was not found.
 - **Using buf approach**: Ensure you ran `buf mod update` and that `buf.yaml` has the correct dependency:
   ```yaml
   deps:
-    - buf.build/kunstack/flags
+    - buf.build/kunstack/protoc-gen-go-flags
   ```
 
 - **Using protoc approach**: Ensure the protoc command includes the correct import path:
@@ -653,9 +653,9 @@ undefined: types.Duration
 
 **Solution**: Ensure you have installed the runtime libraries:
 ```bash
-go get github.com/kunstack/protoc-gen-flags/flags
-go get github.com/kunstack/protoc-gen-flags/types
-go get github.com/kunstack/protoc-gen-flags/utils
+go get github.com/kunstack/protoc-gen-go-flags/flags
+go get github.com/kunstack/protoc-gen-go-flags/types
+go get github.com/kunstack/protoc-gen-go-flags/utils
 ```
 
 The generated code will automatically import these packages; no manual import needed.
@@ -681,21 +681,21 @@ fs.Parse(os.Args[1:]) // 3. Parse arguments
 Failure: plugin flags: not found
 ```
 
-**Solution**: Ensure protoc-gen-flags is installed and in PATH:
+**Solution**: Ensure protoc-gen-go-flags is installed and in PATH:
 ```bash
 # Install plugin
-go install github.com/kunstack/protoc-gen-flags@latest
+go install github.com/kunstack/protoc-gen-go-flags@latest
 
 # Verify installation
-which protoc-gen-flags
-protoc-gen-flags --version
+which protoc-gen-go-flags
+protoc-gen-go-flags --version
 ```
 
 #### Issue 5: Package name conflicts
 
 **Symptom**: Package name conflicts in generated code, such as using both `wrapperspb` and a custom `wrapperspb` package.
 
-**Solution**: protoc-gen-flags automatically handles package name conflicts by generating aliases for conflicting packages. The generated code will automatically use aliased imports; no manual handling required.
+**Solution**: protoc-gen-go-flags automatically handles package name conflicts by generating aliases for conflicting packages. The generated code will automatically use aliased imports; no manual handling required.
 
 #### Issue 6: Map format parsing errors
 
@@ -871,7 +871,7 @@ message Config {
 
 ## Supported Types
 
-protoc-gen-flags supports all Protocol Buffer types:
+protoc-gen-go-flags supports all Protocol Buffer types:
 
 ### Scalar Types
 
@@ -1158,7 +1158,7 @@ message MainConfig {
 
 ## Hierarchical Flag Organization
 
-protoc-gen-flags supports hierarchical flag organization through `WithPrefix` and `WithDelimiter` options.
+protoc-gen-go-flags supports hierarchical flag organization through `WithPrefix` and `WithDelimiter` options.
 
 ### Basic Prefix
 
@@ -1204,10 +1204,10 @@ Generates: `--server-host` (converted to lowercase)
 
 ## FAQ
 
-### Q: How do I integrate protoc-gen-flags into an existing project?
+### Q: How do I integrate protoc-gen-go-flags into an existing project?
 
 **A:** Follow these steps:
-1. Install the plugin: `go install github.com/kunstack/protoc-gen-flags@latest`
+1. Install the plugin: `go install github.com/kunstack/protoc-gen-go-flags@latest`
 2. Copy `annotations.proto` to your project
 3. Add flag annotations to your `.proto` files
 4. Run `protoc` to generate code
@@ -1263,11 +1263,11 @@ config.AddFlags(fs,
 **A:** You need to install and import the runtime library:
 
 ```bash
-go get github.com/kunstack/protoc-gen-flags/flags
+go get github.com/kunstack/protoc-gen-go-flags/flags
 ```
 
 ```go
-import "github.com/kunstack/protoc-gen-flags/flags"
+import "github.com/kunstack/protoc-gen-go-flags/flags"
 ```
 
 ### Q: How do I skip flag generation for specific fields?
@@ -1294,7 +1294,7 @@ Then call `config.SetDefaults()` in your application to apply defaults.
 
 ### Q: Which protobuf types are supported?
 
-**A:** protoc-gen-flags supports all standard protobuf types:
+**A:** protoc-gen-go-flags supports all standard protobuf types:
 - Scalar types: string, int32, int64, bool, float, double, etc.
 - Special types: google.protobuf.Duration, Timestamp
 - Composite types: repeated (arrays), map (maps)
@@ -1304,7 +1304,7 @@ For a detailed list, see the [Supported Types](#supported-types) section.
 
 ### Q: How do I use environment variables with flags?
 
-**A:** protoc-gen-flags focuses on command-line flag binding. For environment variable support, combine with configuration management libraries like [viper](https://github.com/spf13/viper):
+**A:** protoc-gen-go-flags focuses on command-line flag binding. For environment variable support, combine with configuration management libraries like [viper](https://github.com/spf13/viper):
 
 ```go
 import (
@@ -1331,7 +1331,7 @@ fs.Parse(os.Args[1:])
 
 ### Q: Does it support gRPC?
 
-**A:** protoc-gen-flags is fully compatible with gRPC. You can define both gRPC services and flag configurations in the same `.proto` file:
+**A:** protoc-gen-go-flags is fully compatible with gRPC. You can define both gRPC services and flag configurations in the same `.proto` file:
 
 ```bash
 protoc \
@@ -1345,7 +1345,7 @@ protoc \
 
 Contributions are welcome! If you have suggestions or find issues, please:
 
-- Submit an issue: [GitHub Issues](https://github.com/kunstack/protoc-gen-flags/issues)
+- Submit an issue: [GitHub Issues](https://github.com/kunstack/protoc-gen-go-flags/issues)
 - Submit a pull request: Fork the project and create a PR
 - Improve documentation: Help enhance documentation and examples
 

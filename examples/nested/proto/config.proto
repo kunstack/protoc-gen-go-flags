@@ -4,7 +4,7 @@ package example.nested;
 
 import "flags/annotations.proto";
 
-option go_package = "github.com/kunstack/protoc-gen-flags/examples/nested/proto;proto";
+option go_package = "github.com/kunstack/protoc-gen-go-flags/examples/nested/proto;proto";
 
 // ServerConfig contains server-related configuration.
 message ServerConfig {

@@ -6,8 +6,8 @@ import (
 
 	"github.com/spf13/pflag"
 
-	"github.com/kunstack/protoc-gen-flags/examples/hierarchical/proto"
-	"github.com/kunstack/protoc-gen-flags/flags"
+	"github.com/kunstack/protoc-gen-go-flags/examples/hierarchical/proto"
+	"github.com/kunstack/protoc-gen-go-flags/flags"
 )
 
 func main() {

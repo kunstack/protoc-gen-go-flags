@@ -3,8 +3,8 @@ package types_test
 import (
 	"testing"
 
-	testtypes "github.com/kunstack/protoc-gen-flags/tests"
-	"github.com/kunstack/protoc-gen-flags/types"
+	testtypes "github.com/kunstack/protoc-gen-go-flags/tests"
+	"github.com/kunstack/protoc-gen-go-flags/types"
 	"github.com/spf13/pflag"
 	"github.com/stretchr/testify/assert"
 )

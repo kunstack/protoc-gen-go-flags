@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kunstack/protoc-gen-flags/types"
+	"github.com/kunstack/protoc-gen-go-flags/types"
 	"github.com/spf13/pflag"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )

@@ -12,7 +12,7 @@ help:
 # Install dependencies
 deps:
 	@echo "Installing dependencies..."
-	@go install github.com/kunstack/protoc-gen-flags@latest
+	@go install github.com/kunstack/protoc-gen-go-flags@latest
 	@go install github.com/bufbuild/buf/cmd/buf@latest
 	@go mod download
 

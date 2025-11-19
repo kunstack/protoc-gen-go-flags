@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kunstack/protoc-gen-flags/utils"
+	"github.com/kunstack/protoc-gen-go-flags/utils"
 	"github.com/spf13/pflag"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )

@@ -60,7 +60,7 @@ type Option func(*Options)
 type Renamer func(string) string
 
 // This package provides protobuf extensions for generating AddFlags methods
-// using the protoc-gen-flags plugin.
+// using the protoc-gen-go-flags plugin.
 
 // Defaulter is an interface that types can implement to provide default values
 // for their fields. The SetDefaults method should be called to initialize

@@ -3,6 +3,6 @@ plugins:
   - remote: buf.build/protocolbuffers/go
     out: .
     opt: paths=source_relative
-  - local: protoc-gen-flags
+  - local: protoc-gen-go-flags
     out: .
     opt: paths=source_relative

@@ -4,7 +4,7 @@ plugins:
     out: .
     opt:
       - paths=source_relative
-  - local: ["go", "run", "main.go"]
-    out: .
-    opt:
-      - paths=source_relative
+#  - local: ["go", "run", "main.go"]
+#    out: .
+#    opt:
+#      - paths=source_relative

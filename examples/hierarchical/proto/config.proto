@@ -5,7 +5,7 @@ package example.hierarchical;
 import "flags/annotations.proto";
 import "google/protobuf/duration.proto";
 
-option go_package = "github.com/kunstack/protoc-gen-flags/examples/hierarchical/proto;proto";
+option go_package = "github.com/kunstack/protoc-gen-go-flags/examples/hierarchical/proto;proto";
 
 // ServiceConfig represents a simple service configuration
 // used to demonstrate hierarchical flag organization.

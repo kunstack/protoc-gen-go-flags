@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/pflag"
 
-	proto "github.com/kunstack/protoc-gen-flags/examples/nested/proto"
+	proto "github.com/kunstack/protoc-gen-go-flags/examples/nested/proto"
 )
 
 func main() {

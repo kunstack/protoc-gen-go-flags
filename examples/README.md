@@ -1,6 +1,6 @@
 # Examples
 
-This directory contains example projects demonstrating different use cases of protoc-gen-flags.
+This directory contains example projects demonstrating different use cases of protoc-gen-go-flags.
 
 ## Available Examples
 
@@ -81,11 +81,11 @@ make run
 All examples require:
 - Go 1.18+
 - [buf](https://buf.build/docs/installation) CLI tool
-- protoc-gen-flags plugin installed
+- protoc-gen-go-flags plugin installed
 
-Install protoc-gen-flags:
+Install protoc-gen-go-flags:
 ```bash
-go install github.com/kunstack/protoc-gen-flags@latest
+go install github.com/kunstack/protoc-gen-go-flags@latest
 ```
 
 ## Building Examples
@@ -129,7 +129,7 @@ example-name/
 
 All examples use the Buf Schema Registry approach, which is the recommended method:
 
-1. **buf.yaml** declares the dependency on `buf.build/kunstack/flags`
+1. **buf.yaml** declares the dependency on `buf.build/kunstack/protoc-gen-go-flags`
 2. **buf.gen.yaml** configures code generation
 3. Run `buf mod update` to fetch dependencies
 4. Run `buf generate` to generate code

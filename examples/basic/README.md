@@ -1,6 +1,6 @@
 # Basic Example
 
-This example demonstrates basic usage of protoc-gen-flags with a simple server configuration.
+This example demonstrates basic usage of protoc-gen-go-flags with a simple server configuration.
 
 ## Overview
 

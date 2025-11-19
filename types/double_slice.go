@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/pflag"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 
-	"github.com/kunstack/protoc-gen-flags/utils"
+	"github.com/kunstack/protoc-gen-go-flags/utils"
 )
 
 var _ pflag.Value = (*DoubleSliceValue)(nil)

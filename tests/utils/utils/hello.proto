@@ -5,7 +5,7 @@ package tests.utils.utils;
 import "flags/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/kunstack/protoc-gen-flags/tests/utils/utils";
+option go_package = "github.com/kunstack/protoc-gen-go-flags/tests/utils/utils";
 
 message NestedMessage {
   string nested_field = 1 [(flags.value).string = {

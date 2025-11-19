@@ -5,7 +5,7 @@ package tests.utils;
 import "flags/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/kunstack/protoc-gen-flags/tests/utils";
+option go_package = "github.com/kunstack/protoc-gen-go-flags/tests/utils";
 
 message SimpleMessage {
   string name = 1 [(flags.value).string = {

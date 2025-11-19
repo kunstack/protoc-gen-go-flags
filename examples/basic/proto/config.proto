@@ -5,7 +5,7 @@ package example.basic;
 // Import flag annotations from buf.build registry
 import "flags/annotations.proto";
 
-option go_package = "github.com/kunstack/protoc-gen-flags/examples/basic/proto;proto";
+option go_package = "github.com/kunstack/protoc-gen-go-flags/examples/basic/proto;proto";
 
 // ServerConfig represents a simple server configuration with basic field types.
 message ServerConfig {

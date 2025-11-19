@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-protoc-gen-flags is a Go-based protocol buffer compiler plugin that generates command-line flag bindings for protobuf messages. It creates `AddFlags` methods that integrate with the `spf13/pflag` library to automatically generate CLI flags from protobuf message definitions.
+protoc-gen-go-flags is a Go-based protocol buffer compiler plugin that generates command-line flag bindings for protobuf messages. It creates `AddFlags` methods that integrate with the `spf13/pflag` library to automatically generate CLI flags from protobuf message definitions.
 
 ## Git Commit Guidelines
 

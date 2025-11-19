@@ -10,7 +10,7 @@ import "tests/utils/utils/hello.proto";
 import "tests/types/types.proto";
 import "tests/wrapperspb/wrapperspb.proto";
 
-option go_package = "github.com/kunstack/protoc-gen-flags/tests;tests";
+option go_package = "github.com/kunstack/protoc-gen-go-flags/tests;tests";
 
 message TestForMessage {
   option (flags.allow_empty) = true;

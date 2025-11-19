@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package tests.types;
 
-option go_package = "github.com/kunstack/protoc-gen-flags/tests/types";
+option go_package = "github.com/kunstack/protoc-gen-go-flags/tests/types";
 
 // CustomType represents a custom type for testing
 message CustomType {

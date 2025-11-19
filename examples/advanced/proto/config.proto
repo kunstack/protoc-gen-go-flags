@@ -6,7 +6,7 @@ import "flags/annotations.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/kunstack/protoc-gen-flags/examples/advanced/proto;proto";
+option go_package = "github.com/kunstack/protoc-gen-go-flags/examples/advanced/proto;proto";
 
 // LogLevel represents the logging level
 enum LogLevel {

@@ -1,6 +1,6 @@
 # Advanced Types Example
 
-This example demonstrates all supported protobuf types and advanced features in protoc-gen-flags.
+This example demonstrates all supported protobuf types and advanced features in protoc-gen-go-flags.
 
 ## Overview
 

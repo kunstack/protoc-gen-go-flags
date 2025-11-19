@@ -1,5 +1,5 @@
 // Package utils provides utility functions for encoding and decoding operations
-// used throughout the protoc-gen-flags project.
+// used throughout the protoc-gen-go-flags project.
 package utils
 
 import (
