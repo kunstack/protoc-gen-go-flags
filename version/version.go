@@ -20,7 +20,7 @@ import (
 )
 
 // These variables are populated at build time using ldflags
-var gitVersion = "v1.0.2"
+var gitVersion = "v1.0.3"
 
 // Print outputs version information to stdout in a human-readable format.
 func Print() {
