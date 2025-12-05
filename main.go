@@ -44,7 +44,7 @@ func main() {
 		pgs.DebugEnv("DEBUG"),
 		pgs.SupportedFeatures(&ver),
 	).RegisterModule(
-		module.Flags(),
+		&module.WrapModule{},
 	).RegisterPostProcessor(
 		pgsgo.GoFmt(),
 	).Render()

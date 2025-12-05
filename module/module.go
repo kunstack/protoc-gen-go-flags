@@ -118,11 +118,9 @@ func (m *Module) InitContext(c pgs.BuildContext) {
 	m.tpl = template.Must(tpl.Parse(defaultsTpl))
 }
 
-func (m *Module) Execute(targets map[string]pgs.File, _ map[string]pgs.Package) []pgs.Artifact {
-	for _, f := range targets {
-		if m.shouldGenerate(f) {
-			m.generate(f)
-		}
+func (m *Module) Execute(f pgs.File, _ map[string]pgs.Package) []pgs.Artifact {
+	if m.shouldGenerate(f) {
+		m.generate(f)
 	}
 	return m.Artifacts()
 }
